@@ -5,6 +5,7 @@ jobs:
     docker:
       - image: circleci/node:8.9.4
     steps:
+      - checkout
       - run:
           name: LS
           command: ls -l
@@ -22,6 +23,7 @@ jobs:
       - image: circleci/node:8.9.4
     working_directory: ~/project
     steps:
+      - checkout
       - run:
           name: Build
           command: npm run build
