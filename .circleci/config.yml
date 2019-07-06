@@ -1,0 +1,39 @@
+version: 2.1
+jobs:
+  deployBeta:
+    working_directory: ~/project
+    docker:
+      - image: circleci/node:8.9.4
+    steps:
+      - run:
+          name: Build
+          command: npm run build
+      - run:
+          name: Deploy to Beta
+          command: ./node_modules/.bin/firebase deploy --use=beta --token=$FIREBASE_DEPLOY_TOKEN
+  deployProd:
+    docker:
+      - image: circleci/node:8.9.4
+    working_directory: ~/project
+    steps:
+      - run:
+          name: Build
+          command: npm run build
+      - run:
+          name: Deploy to Prod
+          command: ./node_modules/.bin/firebase deploy --use=prod --token=$FIREBASE_DEPLOY_TOKEN
+
+workflows:
+  version: 2
+  deploy:
+    jobs:
+      - deployBeta:
+          context: moonlitdoor
+          filters:
+            branches:
+              only: master
+      - deployProd:
+          context: moonlitdoor
+          filters:
+            branches:
+              only: master
