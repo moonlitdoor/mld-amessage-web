@@ -3,13 +3,13 @@ import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin';
 import Message = admin.messaging.Message;
 
-let app = admin.initializeApp({
+const app = admin.initializeApp({
     credential: admin.credential.applicationDefault(),
 });
 
 export const gcm = functions.https.onRequest((request, response) => {
     if ("POST" === request.method) {
-        let body = JSON.parse(request.rawBody.toString()) as Message;
+        const body = JSON.parse(request.rawBody.toString()) as Message;
         app.messaging().send(body)
             .then((res) => {
                 response.send(res);
