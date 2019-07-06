@@ -13,5 +13,8 @@
   "engines": {
     "node": "8"
   },
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "firebase": "^6.2.4"
+  }
 }
