@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "prod": "mld-amessage-prod",
+    "beta": "mld-amessage-beta"
+  }
+}
