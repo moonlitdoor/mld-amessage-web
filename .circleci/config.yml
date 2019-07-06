@@ -13,8 +13,11 @@ jobs:
           name: Build
           command: npm run build
       - run:
-          name: Deploy to Beta
-          command: ./node_modules/.bin/firebase deploy --use=beta --token=$FIREBASE_DEPLOY_TOKEN
+          name: Use to Beta
+          command: ./node_modules/.bin/firebase use beta --token=$FIREBASE_DEPLOY_TOKEN
+      - run:
+          name: Deploy
+          command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
   deployProd:
     docker:
       - image: circleci/node:8.9.4
@@ -28,8 +31,11 @@ jobs:
           name: Build
           command: npm run build
       - run:
-          name: Deploy to Prod
-          command: ./node_modules/.bin/firebase deploy --use=prod --token=$FIREBASE_DEPLOY_TOKEN
+          name: Use to Prod
+          command: ./node_modules/.bin/firebase use prod --token=$FIREBASE_DEPLOY_TOKEN
+      - run:
+          name: Deploy
+          command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
 
 workflows:
   version: 2
