@@ -1,0 +1,17 @@
+{
+  "name": "mld-amessage-web",
+  "scripts": {
+    "lint": "tslint --project tsconfig.json",
+    "build": "cd functions && npm run build",
+    "watch": "cd functions && npm run watch",
+    "serve": "cd npm run build && firebase serve --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "cd functions && npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "8"
+  },
+  "private": true
+}
