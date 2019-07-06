@@ -7,7 +7,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Function Dependencies
+          name: Install Dependencies
           command: npm install && cd functions && npm install
       - run:
           name: Build
@@ -22,7 +22,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Function Dependencies
+          name: Install Dependencies
           command: npm install && cd functions && npm install
       - run:
           name: Build
