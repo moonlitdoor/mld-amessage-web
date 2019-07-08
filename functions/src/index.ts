@@ -12,7 +12,7 @@ export const gcm = functions.https.onRequest((request, response) => {
         const body = JSON.parse(request.rawBody.toString()) as Message;
         app.messaging().send(body)
             .then((res) => {
-                response.send(res);
+                response.send({message: "Success", code: res});
             })
             .catch((error) => {
                 console.log(error);
